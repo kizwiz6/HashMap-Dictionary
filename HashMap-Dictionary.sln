@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashMap-Dictionary", "HashMap-Dictionary.csproj", "{394DDFA5-1E6B-437B-A838-82AAA6C82BFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryTests", "..\DictionaryTests\DictionaryTests.csproj", "{0CC22CC2-110F-4AD6-B927-2376B89CC940}"
+	ProjectSection(ProjectDependencies) = postProject
+		{394DDFA5-1E6B-437B-A838-82AAA6C82BFF} = {394DDFA5-1E6B-437B-A838-82AAA6C82BFF}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{394DDFA5-1E6B-437B-A838-82AAA6C82BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{394DDFA5-1E6B-437B-A838-82AAA6C82BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{394DDFA5-1E6B-437B-A838-82AAA6C82BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CC22CC2-110F-4AD6-B927-2376B89CC940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC22CC2-110F-4AD6-B927-2376B89CC940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC22CC2-110F-4AD6-B927-2376B89CC940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC22CC2-110F-4AD6-B927-2376B89CC940}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

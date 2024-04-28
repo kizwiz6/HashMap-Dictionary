@@ -1,101 +1,41 @@
 ﻿namespace HashMap_Dictionary
 {
-    internal class Program
+    /// <summary>
+    /// Main program class.
+    /// </summary>
+    public class Program
     {
+        /// <summary>
+        /// Main method
+        /// </summary>
+        /// <param name="args">Command-line arguments</param>
         static void Main(string[] args)
         {
-            // Creating a dictionary to store <key, value> pairs
-            Dictionary<string, int> ages = new Dictionary<string, int>();
+            // Create an instance of the AgeTracker
+            IAgeTracker ageTracker = new AgeTracker();
 
             // Adding elements to the dictionary
-            AddOrUpdateAge(ages, "Kieran", 29);
-            AddOrUpdateAge(ages, "James", 29);
-            ages["Jason"] = 32;
-            ages.Add("Cheryl", 26);
+            ageTracker.AddOrUpdateAge("Kieran", 29);
+            ageTracker.AddOrUpdateAge("James", 29);
+            ageTracker.AddOrUpdateAge("John", 25);
+            ageTracker.AddOrUpdateAge("Alice", 30);
+            ageTracker.AddOrUpdateAge("Bob", 67);
 
-            // Accessing elements in the dictionary
-            DisplayAge(ages, "Kieran");
-            DisplayAge(ages, "Jason");
 
-            // Modifying elements in the dictionary
-            AddOrUpdateAge(ages, "Jason", 33);
-            DisplayAge(ages, "Cheryl");
+            // Display ages for specific names
+            Console.WriteLine($"Kieran's age: {ageTracker.GetAge("Kieran")}");
+            Console.WriteLine($"James' age: {ageTracker.GetAge("James")}");
+            Console.WriteLine($"John's age: {ageTracker.GetAge("John")}");
+            Console.WriteLine($"Alice's age: {ageTracker.GetAge("Alice")}");
+            Console.WriteLine($"Bob's age: {ageTracker.GetAge("Bob")}");
 
-            // Checking if a key exists and displaying age if it does
-            DisplayAgeIfExists(ages, "Alice");
-            DisplayAgeIfExists(ages, "Kieran");
-
-            // Iterating over key-value pairs in the dictionary and displaying all ages
-            DisplayAllAges(ages);
-
-        }
-
-        /// <summary>
-        /// Method to add or update age in the dictionary.
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <param name="name"></param>
-        /// <param name="age"></param>
-        static void AddOrUpdateAge(Dictionary<string, int> dictionary, string name, int age)
-        {
-            if (dictionary.ContainsKey(name))
+            // Display all names and ages stored in the tracker
+            Console.WriteLine("\nAll ages:");
+            foreach (var entry in ageTracker.GetAllAges())
             {
-                // If name already exists, update the age
-                dictionary[name] = age;
+                Console.WriteLine($"Name: {entry.Key}, Age: {entry.Value}");
             }
-            else
-            {
-                // If name doesn't excist, add it to the dictionary
-                dictionary.Add(name, age);
-            }
-        }
 
-        /// <summary>
-        /// Method to display age for a given name
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <param name="name"></param>
-        static void DisplayAge(Dictionary<string, int> dictionary, string name)
-        {
-            int age;
-            if (dictionary.TryGetValue(name, out age))
-            {
-                // If name exists, display its age
-                Console.WriteLine($"{name}'s age: {age}");
-            }
-            else
-            {
-                // If name doesn't exist, inform the user
-                Console.WriteLine($"{name} not found in the dictionary.");
-            }
-        }
-
-        static void DisplayAgeIfExists(Dictionary<string, int> dictionary, string name)
-        {
-            if (dictionary.ContainsKey(name))
-            {
-                // If name exists, display its age
-                DisplayAge(dictionary, name);
-            }
-            else
-            {
-                // If name doesn't exist, inform the user
-                Console.WriteLine($"{name} not found in the dictionary.");
-            }
-        }
-
-        /// <summary>
-        /// Method to display all ages in the dictionary
-        /// </summary>
-        /// <param name="dictionary"></param>
-        static void DisplayAllAges(Dictionary<string, int> dictionary)
-        {
-            Console.WriteLine("All ages:");
-            foreach (KeyValuePair<string, int> pair in dictionary)
-            {
-                // Display each name and its corresponding age
-                Console.WriteLine($"Name: {pair.Key}, Age: {pair.Value}");
-            }
         }
     }
 }
